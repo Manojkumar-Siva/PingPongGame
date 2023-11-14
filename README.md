@@ -59,10 +59,8 @@ public class gamemanager : MonoBehaviour
         bottomLeft = Camera.main.ScreenToWorldPoint(new Vector2(0, 0));
         topRight = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
         Instantiate(ball);
-
         Paddle paddle1 = Instantiate(paddle) as Paddle;
         Paddle paddle2 = Instantiate(paddle) as Paddle;
-
         paddle1.Init(true); //right paddle
         paddle2.Init(false); //left paddle
     }
@@ -100,7 +98,6 @@ public class Ball : MonoBehaviour
             direction.y = -direction.y;
         if (transform.position.y > gamemanager.topRight.y - radius && direction.y > 0)
             direction.y = -direction.y;
-
         //Game Over
         if (transform.position.x < gamemanager.bottomLeft.x + radius && direction.x < 0)
         {
@@ -123,8 +120,7 @@ public class Ball : MonoBehaviour
             if (isRight == false && direction.x < 0)
                 direction.x = -direction.x;
         }
-    }
-}
+    }}
  ```
 
  ## Paddle:
@@ -133,7 +129,6 @@ public class Ball : MonoBehaviour
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
-
 public class Paddle : MonoBehaviour
 {
     [SerializeField]
@@ -166,7 +161,6 @@ public class Paddle : MonoBehaviour
         transform.position = pos;
         transform.name = input;
     }
-
     void Update() // Update is called once per frame
     {
         float move = Input.GetAxis(input) * Time.deltaTime * speed;
@@ -177,8 +171,7 @@ public class Paddle : MonoBehaviour
             move = 0;
         //to move paddle
         transform.Translate(move * Vector2.up);
-    }
-}
+    }}
  ```
  ## Output:
  ![Alt text](image.png)
